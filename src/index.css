@@ -19,3 +19,7 @@ body {
   background-color: var(--whit-color);
   color: var(--text-color);
 }
+
+.bg-sacandry {
+  background: #6ec1e4;
+}
