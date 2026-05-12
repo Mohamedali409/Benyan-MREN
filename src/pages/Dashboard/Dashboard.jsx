@@ -5,17 +5,22 @@ import Sidebar from "../../components/Dashborad/Sidebar/sidebar";
 import HomeDashboard from "./HomeDashboard";
 import Users from "./Users";
 import Projects from "./Projects";
+import { useState } from "react";
 
 function Dashboard() {
+  const [showDraft, setShowDraft] = useState(false);
   return (
     <>
       <Navbar adminName="mohamed" />
       <div className="d-flex">
-        <Sidebar />
+        <Sidebar showDraft={showDraft} />
         <main className="flex-grow-1">
           <Routes>
             <Route path="/" element={<HomeDashboard />} />
-            <Route path="/users" element={<Users />} />
+            <Route
+              path="/users"
+              element={<Users setShowDraft={setShowDraft} />}
+            />
             <Route path="/project" element={<Projects />} />
           </Routes>
         </main>
