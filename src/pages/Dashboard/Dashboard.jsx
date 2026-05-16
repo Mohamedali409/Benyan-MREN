@@ -10,7 +10,8 @@ import TableDashboard from "../../components/ui/TableDashboard/TableDashboard";
 import FormDashborad from "../../components/ui/FormDashborad/FormDashborad";
 
 function Dashboard() {
-  const [showDraft, setShowDraft] = useState(false);
+  const [showDraftUser, setShowDraftUSer] = useState(false);
+  const [showDraftTable, setShowDraftTable] = useState(false);
   const userData = {
     name: "User",
     button: "Add New User",
@@ -23,7 +24,10 @@ function Dashboard() {
     <>
       <Navbar adminName="mohamed" />
       <div className="d-flex">
-        <Sidebar showDraft={showDraft} />
+        <Sidebar
+          showDraftUser={showDraftUser}
+          showDraftTable={showDraftTable}
+        />
         <main className="flex-grow-1">
           <Routes>
             <Route path="/" element={<HomeDashboard />} />
@@ -31,14 +35,14 @@ function Dashboard() {
               <Route index element={<TableDashboard data={userData} />} />
               <Route
                 path="add"
-                element={<FormDashborad setShowDraft={setShowDraft} />}
+                element={<FormDashborad setShowDraft={setShowDraftUSer} />}
               />
             </Route>
             <Route path="/project" element={<Projects />}>
               <Route index element={<TableDashboard data={projectData} />} />
               <Route
                 path="add"
-                element={<FormDashborad setShowDraft={setShowDraft} />}
+                element={<FormDashborad setShowDraft={setShowDraftTable} />}
               />
             </Route>
           </Routes>

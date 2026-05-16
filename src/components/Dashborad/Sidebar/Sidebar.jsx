@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import style from "./Sidebar.module.css";
-const Sidebar = ({ showDraft }) => {
+const Sidebar = ({ showDraftUser, showDraftTable }) => {
   const links = [
     {
       id: 1,
@@ -52,7 +52,10 @@ const Sidebar = ({ showDraft }) => {
             <i className={`fa-solid fa-${item.icon} fs-4 `}></i>
             <span className={`${style["title"]}`}>{item.title}</span>
 
-            {item.path === "/users" && showDraft && (
+            {item.path === "/users" && showDraftUser && (
+              <span className="badge bg-danger ms-auto">Draft</span>
+            )}
+            {item.path === "/project" && showDraftTable && (
               <span className="badge bg-danger ms-auto">Draft</span>
             )}
           </NavLink>

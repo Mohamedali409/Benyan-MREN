@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const FormDashborad = ({ setShowDraft }) => {
+const FormDashborad = ({ setShowDraft, setShowDraftTable }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -19,6 +19,7 @@ const FormDashborad = ({ setShowDraft }) => {
     );
 
     setShowDraft(hasData);
+    setShowDraftTable(hasData);
   };
 
   return (
