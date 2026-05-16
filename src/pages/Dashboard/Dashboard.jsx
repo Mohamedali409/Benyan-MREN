@@ -6,6 +6,8 @@ import HomeDashboard from "./HomeDashboard";
 import Users from "./Users";
 import Projects from "./Projects";
 import { useState } from "react";
+import TableDashboard from "../../components/ui/TableDashboard/TableDashboard";
+import FormDashborad from "../../components/ui/FormDashborad/FormDashborad";
 
 function Dashboard() {
   const [showDraft, setShowDraft] = useState(false);
@@ -17,10 +19,13 @@ function Dashboard() {
         <main className="flex-grow-1">
           <Routes>
             <Route path="/" element={<HomeDashboard />} />
-            <Route
-              path="/users"
-              element={<Users setShowDraft={setShowDraft} />}
-            />
+            <Route path="/users" element={<Users />}>
+              <Route index element={<TableDashboard />} />
+              <Route
+                path="add"
+                element={<FormDashborad setShowDraft={setShowDraft} />}
+              />
+            </Route>
             <Route path="/project" element={<Projects />} />
           </Routes>
         </main>
