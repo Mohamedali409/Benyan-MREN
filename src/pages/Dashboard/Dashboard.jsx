@@ -11,6 +11,14 @@ import FormDashborad from "../../components/ui/FormDashborad/FormDashborad";
 
 function Dashboard() {
   const [showDraft, setShowDraft] = useState(false);
+  const userData = {
+    name: "User",
+    button: "Add New User",
+  };
+  const projectData = {
+    name: "Project",
+    button: "Add New Project",
+  };
   return (
     <>
       <Navbar adminName="mohamed" />
@@ -20,13 +28,19 @@ function Dashboard() {
           <Routes>
             <Route path="/" element={<HomeDashboard />} />
             <Route path="/users" element={<Users />}>
-              <Route index element={<TableDashboard />} />
+              <Route index element={<TableDashboard data={userData} />} />
               <Route
                 path="add"
                 element={<FormDashborad setShowDraft={setShowDraft} />}
               />
             </Route>
-            <Route path="/project" element={<Projects />} />
+            <Route path="/project" element={<Projects />}>
+              <Route index element={<TableDashboard data={projectData} />} />
+              <Route
+                path="add"
+                element={<FormDashborad setShowDraft={setShowDraft} />}
+              />
+            </Route>
           </Routes>
         </main>
       </div>
